@@ -1,0 +1,25 @@
+
+
+
+app.factory('ChatService',function($rootScope,SockJS)
+{
+	var socket = new SockJS("/BlogMiddleWare/chatmodule")
+	var stompClient=Stomp.over(socket);
+	console.log(stompClient)
+	stompClient.connect('','',function(frame)
+	{
+		alert('In connect in service')
+		$rootScope.$broadcast('sockConnected',frame)
+		
+	})
+	
+	return
+	{
+		stompClient:stompClient
+	}
+	
+
+
+
+
+})

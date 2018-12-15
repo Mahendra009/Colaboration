@@ -1,0 +1,19 @@
+package com.niit.BlogMiddleWare.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class ChatController {
+	
+	private final SimpMessagingTemplate messagingTemplate;
+	private List<String> users= new ArrayList<String>();
+	
+	@Autowired
+	public ChatController(SimpMessagingTemplate messagingTemplate);
+
+}

@@ -1,0 +1,177 @@
+package com.niit.BlogMiddleWare.RestController;
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.niit.BlogBackEnd.DAO.UserDAO;
+import com.niit.BlogBackEnd.model.ErrorClazz;
+import com.niit.BlogBackEnd.model.User;
+
+@RestController
+public class UserController {
+
+	@Autowired
+	private UserDAO userDAO;
+
+	@PostMapping(value = "/saveUser") // Sign up
+	public ResponseEntity<?> saveUser(@RequestBody User user) {
+		try {
+			// if emailId is not unique
+			if(!userDAO.isEmailIDUnique(user.getEmailId()))
+			{
+				ErrorClazz errorClazz = new ErrorClazz(2, "Email ID that You have entered is already exist..Please choose different email ID");
+				return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+			
+			userDAO.saveUser(user);
+			return new ResponseEntity<Void>(HttpStatus.OK);
+			
+			} 
+		catch (Exception e) 
+			{
+		ErrorClazz errorClazz = new ErrorClazz(1,"Password Feild can not be empty."+e.getMessage());
+		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+
+	}
+
+	@GetMapping(value = "/listUsers")
+	public ResponseEntity<?> listUsers() {
+		System.out.println("Get all the list of Users");
+
+		List<User> listUsers = userDAO.listUsers();
+
+		if (listUsers != null)
+		{
+			return new ResponseEntity<List<User>>(listUsers, HttpStatus.OK);
+		}
+		else
+		{
+			ErrorClazz errorClazz = new ErrorClazz(2, "No Record Found");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@PutMapping(value="/updateUser/{emailId}")
+	public ResponseEntity<?> updateUser(@RequestBody User user,@PathVariable("emailId") String emailId)
+	{
+		System.out.println("User updated");
+		User user1 = userDAO.getUser(emailId);
+		user1.setAddress(user.getAddress());
+		user1.setCity(user.getCity());
+		user1.setCountry(user.getCountry());
+		user1.setEmailId(user.getEmailId());
+		user1.setOnline(user.isOnline());
+		user1.setName(user.getName());
+		user1.setPassword(user.getPassword());
+		user1.setPhone(user.getPhone());
+		user1.setRole(user.getRole());
+		
+		if(userDAO.updateUser(user1))
+			return new ResponseEntity<String>("User updated Successfully", HttpStatus.OK);
+		else
+			return new ResponseEntity<String>("Fail to update User", HttpStatus.NOT_FOUND);
+		
+	}
+	
+	@DeleteMapping(value="/deleteUser/{emailId}")
+	public ResponseEntity<?> deleteUser(@RequestBody User user,@PathVariable("emailId") String emailId)
+	{
+		System.out.println("User Deleted");
+		User user1 = userDAO.getUser(emailId);
+		
+		if(userDAO.deleteUser(user1))
+			return new ResponseEntity<String>("User Deleted Successfully",HttpStatus.OK);
+		else
+			return new ResponseEntity<String>("Fail to delete user",HttpStatus.NOT_FOUND);
+	}
+	
+	@PostMapping(value="/getUser/{emailId}")
+	public ResponseEntity<?> getUser(@PathVariable("userID") String emailId)
+	{
+		System.out.println("Get User");
+		User user = userDAO.getUser(emailId);
+		
+		if(user != null)
+			return new ResponseEntity<String>("User get Successfully", HttpStatus.OK);
+		else
+			return new ResponseEntity<String>("Fail to get User",HttpStatus.NOT_FOUND);
+	}
+	
+	@PutMapping(value="/login")
+	public ResponseEntity<?> loginUser(@RequestBody User user,HttpSession httpSession)
+	{
+		System.out.println("Login User");
+			User validUser = userDAO.login(user);
+		if(validUser == null)
+		{
+			ErrorClazz errorClazz = new ErrorClazz(4, "Invalid Emai ID and Password");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		}
+		else
+		{
+			validUser.setOnline(true); //because we have to update user online status thats why we r updating here.
+			userDAO.updateUser(validUser);
+			httpSession.setAttribute("loggedInUser", validUser.getEmailId());
+			System.out.println("Session Id : " + httpSession.getId());
+			System.out.println("Created on : " + httpSession.getCreationTime());
+			System.out.println("Session Attribute : " + httpSession.getAttribute("loggedInUser"));
+			return new ResponseEntity<User>(validUser,HttpStatus.OK);
+		}
+	}
+	
+	@PutMapping(value="/logout")
+	public ResponseEntity<?> logoutUser(HttpSession httpSession )
+	{
+		System.out.println("User Logout");
+		String emailId = (String) httpSession.getAttribute("loggedInUser");
+		if(emailId == null)
+		{
+			ErrorClazz errorClazz = new ErrorClazz(4, "Invalid Emai ID and Password");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		}
+		User user = userDAO.getUser(emailId);
+		user.setOnline(false);
+		userDAO.updateUser(user);
+		httpSession.removeAttribute("loggedInUser");
+		httpSession.invalidate();
+		return new ResponseEntity<Void>(HttpStatus.OK);
+		
+	}
+	
+	@PutMapping(value = "/updateProfile")
+	public ResponseEntity<?> updateProfile(@RequestBody User user, HttpSession httpSession)
+	{
+		// check for authentication
+		String emailId = (String) httpSession.getAttribute("loggedInUser");
+		if(emailId == null)
+		{
+			ErrorClazz errorClazz = new ErrorClazz(4, "Unauthorised Access.. Please loging with curredt information");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		}
+		try
+		{
+			userDAO.updateUser(user);
+		}
+		catch(Exception e)
+		{
+			ErrorClazz errorClazz = new ErrorClazz(5, "Unable to update user details");
+					return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<User>(user,HttpStatus.OK);
+	}
+	
+
+}

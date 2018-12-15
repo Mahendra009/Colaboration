@@ -1,0 +1,20 @@
+<div class="container" style="margin-top: 75px;">
+<div class="card card-info">
+<div class="card-header bg-primary text-white">
+ <h3 style="text-align: center;">Friends List</h3>
+</div>
+<div class="card-body">
+<ul style="list-style: none;">
+<li ng-repeat="friend in friendsDetails">
+<img class="" alt="Profile Pic" src="http://localhost:8081/BlogMiddleWare/getimage?emailId={{friend.emailId}}" height="100px;" width="100px;"><br>
+{{friend.name}}<br>
+{{friend.emailId}}<br>
+{{friend.phone}}
+<hr>
+
+
+</li>
+</ul>
+</div>
+</div>
+</div>

@@ -1,0 +1,40 @@
+{
+  "folders": [
+    {
+      "path": "C:\\Users\\Srivastava\\eclipse-workspace\\Project-2\\AngularJS"
+    },
+    {
+      "path": "C:\\Users\\Srivastava\\eclipse-workspace\\Project-2\\AngularPractice"
+    },
+    {
+      "path": "C:\\Users\\Srivastava\\Blog\\Blog"
+    },
+    {
+      "path": "C:\\Users\\Srivastava\\eclipse-workspace\\Project-2\\BlogBackEnd"
+    },
+    {
+      "path": "C:\\Users\\Srivastava\\eclipse-workspace\\Project-2\\BlogMiddleWare"
+    },
+    {
+      "path": "C:\\Users\\Srivastava\\eclipse-workspace\\Project-2\\RemoteSystemsTempFiles"
+    },
+    {
+      "path": "C:\\Users\\Srivastava\\eclipse-workspace\\Project-2\\Servers"
+    }
+  ],
+  "settings": {
+    "javascript.referencesCodeLens.enabled": true,
+    "typescript.implementationsCodeLens.enabled": true,
+    "typescript.referencesCodeLens.enabled": true,
+    "javascript.implicitProjectConfig.checkJs": true,
+    "htmlhint.options": {
+      "attr-value-double-quotes": true,
+      "attr-no-duplication": true,
+      "tag-pair": true,
+      "spec-char-escape": true,
+      "id-unique": false,
+      "src-not-empty": true,
+      "title-require": true
+    }
+  }
+}

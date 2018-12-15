@@ -1,0 +1,11 @@
+com\niit\BlogMiddleWare\RestController\NotificationController.class
+com\niit\BlogMiddleWare\RestController\UserController.class
+com\niit\BlogMiddleWare\RestController\JobController.class
+com\niit\BlogMiddleWare\RestController\BlogPostController.class
+com\niit\BlogMiddleWare\RestController\FriendController.class
+com\niit\BlogMiddleWare\RestController\ProfilePictureController.class
+com\niit\BlogMiddleWare\Controller\IndexController.class
+com\niit\BlogMiddleWare\RestController\ForumController.class
+com\niit\BlogMiddleWare\RestController\BlogCommentController.class
+com\niit\BlogMiddleWare\Config\WebResolver.class
+com\niit\BlogMiddleWare\Config\WebInitializer.class

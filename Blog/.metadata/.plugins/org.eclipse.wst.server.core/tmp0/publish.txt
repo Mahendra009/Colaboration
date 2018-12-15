@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Sat Oct 13 13:00:20 IST 2018
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\Srivastava\\.m2\\repository\\org\\springframework\\spring-web\\5.0.8.RELEASE\\spring-web-5.0.8.RELEASE.jar=WEB-INF/lib/spring-web-5.0.8.RELEASE.jar
+org.eclipse.jst.j2ee.server\:BlogBackEnd=WEB-INF/lib/BlogBackEnd-0.0.1-SNAPSHOT.jar

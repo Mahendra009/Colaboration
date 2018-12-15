@@ -1,0 +1,44 @@
+<div class="container">
+<div class="card card-info">
+<div class="card-header bg-primary text-white" style="text-align: center;"><h3>{{blogPost.blogTitle}}</h3></div>
+<div class="card-body">
+<ul style="list-style: none;">
+<li>
+<b>Posted On : {{blogPost.postedOn}}</b><br>
+<b>Posted By : {{blogPost.postedBy.name}}</b><br>
+<!-- <b>Blog Content : {{blogPost.blogContent}}</b><br> -->
+<p ng-bind-html="content">
+<hr>
+<!-- <b>Likes : {{blogPost.likes}}</b><br> -->
+<textarea rows="5" cols="50" ng-model="commentText" required></textarea><span style="color: red;">{{error}}</span><br>
+
+
+<button class="btn btn-info" ng-click="addBlogComment(blogPost,commentText)">Post Comment</button><br>
+<a href="" ng-click="getBlogComments(blogPost.blogId)">View Comments</a><br>
+<div ng-hide="blogComment == undefined">
+<b>Date : {{blogComment.commentedOn}}</b> &nbsp; Commented By : {{blogComment.commentedBy.emailId}}<br>
+<b>{{blogComment.commentText}}</b>
+</div>
+<br>
+<ul style="list-style: none;">
+<li ng-repeat="blogComment in blogComments | orderBy: '-commentedOn' ">
+<img class="img-fluid rounded" alt="Profile Pic" src="http://localhost:8081/BlogMiddleWare/getimage?emailId={{blogComment.commentedBy.emailId}}" height="100px;" width="100px;">
+<b>Commented By : 
+<span ng-if="user.emailId != blogComment.commentedBy.loggedInUser.emailId">{{blogComment.commentedBy.name}}</span>
+<span ng-if="user.emailId == blogComment.commentedBy.loggedInUser.emailId">You</span>
+<!-- {{user.emailId}} -->
+</b> &nbsp; <b>Date : {{blogComment.commentedOn}}</b><br>
+{{blogComment.commentText}}
+<hr>
+</li>
+</ul>
+
+
+</li>
+</ul>
+<button class="btn  btn-primary text-uppercase">
+<a href="#!listApprovedBlogs" class="text-white">List Blogs</a>
+</button>
+</div>
+</div>
+</div>

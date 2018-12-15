@@ -1,0 +1,19 @@
+<div class="container" style="margin-top: 100px;">
+<div class="card card-info">
+<div class="card-header bg-primary text-white" style="text-align: center;">Blogs Waiting For Approval</div>
+<div class="card-body">
+<div ng-if="blogsWaitingForApproval.lenght == 0">No Blog Waiting For Approval</div>
+
+
+<ul style="list-style: none;">
+<li ng-repeat="blogPost in blogsWaitingForApproval">
+<img alt="" class="img-fluid rounded" alt="Profile Pic" src="http://localhost:8081/BlogMiddleWare/getimage?emailId={{blogPost.postedBy.emailId}}">
+<b><a href="#!listBlogsWaitingForApproval/{{blogPost.blogId}}">Blog Title : {{blogPost.blogTitle}}</a></b><br>
+<b>Posted By : {{blogPost.postedBy.name}}</b><br>
+<b>Posted On : {{blogPost.postedOn}}</b>
+<hr>
+</li>
+</ul>
+</div>
+</div>
+</div>

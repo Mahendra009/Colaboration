@@ -1,0 +1,22 @@
+package com.niit.BlogBackEnd.DAO.Impl;
+
+import java.util.List;
+
+import com.niit.BlogBackEnd.DAO.ChatDao;
+import com.niit.BlogBackEnd.model.Message;
+
+public class ChatDAOImpl implements ChatDao {
+
+	@Override
+	public boolean saveMessage(Message msg) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Message> getMessage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

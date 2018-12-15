@@ -1,0 +1,44 @@
+package com.niit.BlogBackEnd.DAO.Impl;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.niit.BlogBackEnd.DAO.ChatDao;
+import com.niit.BlogBackEnd.model.Message;
+
+@Repository("chatDao")
+@Transactional
+public class ChatDAOImpl implements ChatDao {
+	
+	@Autowired
+	private SessionFactory sessionFactory; 
+
+	@Override
+	public boolean saveMessage(Message msg) {
+		try {
+			sessionFactory.getCurrentSession().save(msg);
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public List<Message> getMessage() {
+		try {
+			return sessionFactory.getCurrentSession().createQuery("from Message").list();
+		}
+		catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+
+}

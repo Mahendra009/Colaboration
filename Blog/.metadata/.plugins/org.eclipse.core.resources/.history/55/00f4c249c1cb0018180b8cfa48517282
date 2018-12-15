@@ -1,0 +1,8 @@
+<ul style="list-style: none; margin-top: 75px;">
+<li ng-repeat="user in suggestedUsers">
+<img class="" alt="Profile Pic" src="http://localhost:8081/BlogMiddleWare/getimage?emailId={{user.emailId}}" height="100px;" width="100px;"><br>
+{{user.name}}<br>
+<button class="btn btn-info" ng-click="sendFriendRequest(user)">Send Friend Request</button>
+
+</li>
+</ul>

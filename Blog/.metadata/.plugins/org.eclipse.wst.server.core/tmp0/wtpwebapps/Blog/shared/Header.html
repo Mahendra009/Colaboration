@@ -1,0 +1,120 @@
+<style>
+.dropdown:hover>.dropdown-menu
+{
+	display: block;
+}
+</style>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" style="font-size:30px;" href="#!home"><i class="fab fa-vuejs"></i>ision</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <!-- <div class="ml-5">
+				<form action="">
+					<div class="input-group">
+						<input type="text" class="form-control" size="60px"
+							placeholder="Search Your Blog Here" name="search"> 
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit" style="background-color:#e91e63;">
+								<i class="fas fa-search" style="font-size:24px;"></i>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div> -->
+          <ul class="navbar-nav ml-auto" style="font-size:20px;">
+           <!-- <li class="nav-item active ml-5" ng-show="user.emailId != undefind">
+              <a class="nav-link"  href="#!listJobs">  <i class="fas fa-search-plus"></i> Job</a>
+            </li>
+            
+            <li class="nav-item active ml-5" ng-show="user.emailId != undefind">
+              <a class="nav-link"  href="#!listApprovedBlogs">  <i class="fab fa-blogger"></i> Blog</a>
+            </li> -->
+      
+      
+            <li class="nav-item active ml-5" ng-show="user.emailId == undefined">
+              <a class="nav-link"  href="#!login"> <i class="fas fa-sign-in-alt"></i> Login</a>
+            </li>
+            <li class="nav-item active ml-5" ng-show="user.emailId == undefined">
+              <a class="nav-link" href="#!register"><i class="fas fa-user-plus"></i> Signup</a>
+            </li>
+            
+             <li class="nav-item active dropdown ml-auto" ng-show="user.emailId != undefined">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <i class="fas fa-user-friends"></i> Friends
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#!suggestedUsers">Suggested Friends</a>
+          <a class="dropdown-item" href="#!pendingRequests">Pending Requests</a>
+           <!-- <a class="dropdown-item" href="#!listOfFriends">Your Friends List</a> -->
+         
+          <!-- <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div> -->
+      </li>
+            
+          <li class="dropdown ml-5">
+            <a href="#"  data-toggle="dropdown" ng-show="user.emailId != undefined">
+            <i class="fas fa-globe-asia"></i>
+            <span class="row-number-notification" ng-if="notificationCount>0">{{notificationCount}}</span></a>
+            <ul class="dropdown-menu">
+           		 <span class="dropdown-content">
+            		<li ng-repeat="notification in listNotificationNotViewed">
+            		<a class="dropdown-item" href="#!getNotification/{{notification.notificationID}}">{{notification.blogTitle}} :: Your Blog request has been Noticed. Click to view your blog</a>
+            			
+           			</li>
+            	</span>
+            </ul>
+         </li>
+          <!-- <li class="nav-item active dropdown" ng-show="user.emailId != undefind">
+        <a class="nav-link  badge badge-pill badge-success" ng-show="notificationCount>0" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-globe-asia"></i> {{notificationCount}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown"  ng-repeat="notification in listNotificationNotViewed">
+          
+          <a class="dropdown-item" href="#">{{notification.blogTitle}} :: Your Blog request has bees approved. Click to view your blog</a>
+        
+          <a class="dropdown-item" href="#">Another action</a>
+          
+        </div>
+      </li> -->
+            
+            
+            
+            <!-- <li class="nav-item active dropdown ml-5" ng-show="user.role == 'User'">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       <i class="fas fa-user"></i> {{user.name}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        	<a class="dropdown-item" href="#!updateProfile"><i class="fas fa-user-circle"></i> Update Profile</a>
+        	<a class="dropdown-item" href="#!addBlog"><i class="fas fa-ad"></i> Add Blog</a>
+          <a class="dropdown-item" href="#" ng-click="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+            <li class="nav-item active dropdown ml-5"  ng-show="user.role == 'Admin'">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <i class="fas fa-user"></i> {{user.name}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+         <a class="dropdown-item" href="#!updateProfile"><i class="fas fa-user-circle"></i> Update Profile</a>
+         <a class="dropdown-item"  href="#!job"><i class="fas fa-search-plus"></i>Add Job</a>
+         <a class="dropdown-item" href="#!addBlog"><i class="fas fa-ad"></i> Add Blog</a>
+         <a class="dropdown-item" href="#"><i class="fas fa-thumbs-up"></i> Approved Blogs</a>
+         <a class="dropdown-item" href="#"><i class="fas fa-chalkboard-teacher"></i> Waiting For Approval</a>
+        <a class="dropdown-item" href="#" ng-click="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          <a class="dropdown-item" href="">Action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>

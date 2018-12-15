@@ -1,0 +1,67 @@
+<div class="container" style="margin-top: 75px;">
+<span style="color: red;">{{error.errorMsg}}</span>
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card card-signin flex-row my-5">
+          <div class="card-img-left d-none d-md-flex">
+             <!-- Background image for card set in CSS! -->
+          </div>
+          <div class="card-body">
+            <h5 class="card-title card-header bg-dark text-white  text-center">Add Jobs</h5>
+            <form class="form-signin">
+              <div class="form-label-group">
+              <label for="inputUserame">Job Title</label>
+                <input type="text" ng-model="job.jobTitle" id="inputJobTitle" class="form-control" placeholder="Job Title" required autofocus>
+              </div>
+
+              <div class="form-label-group">
+               <label for="inputCompanyName">Company Name</label>
+                <input type="text" ng-model="job.companyName" id="inputCompanyName" class="form-control" placeholder="Company Name" required>
+              </div>
+              
+              <div class="form-label-group">
+              <label for="inputDesignation">Designation</label>
+                <input type="text" ng-model="job.jobDesignation" id="inputDesignation" class="form-control" placeholder="Designation" required >
+              </div>
+              
+              <div class="form-label-group">
+              <label for="inputSalary">Salary</label>
+                <input type="text" ng-model="job.salary" id="inputSalary" class="form-control" placeholder="Salary" required >
+              </div>
+              
+              <div class="form-label-group">
+              <label for="inputQualification">Qualification</label>
+                <input type="text" ng-model="job.jobQualification" id="inputQualification" class="form-control" placeholder="Qualification" required >
+              </div>
+              
+              <div class="form-label-group">
+              <label for="inputExperience">Experience</label>
+                <input type="text" ng-model="job.experience" id="inputExperience" class="form-control" placeholder="Experience" required >
+              </div>
+              
+              <div class="form-label-group">
+              <label for="inputLocation">Location</label>
+                <input type="text" ng-model="job.location" id="inputLocation" class="form-control" placeholder="Location" required >
+              </div>
+              
+              <div class="form-label-group">
+              <label for="inputDescription">Description</label>
+                <textarea rows="5" cols=""  ng-model="job.jobDescription" id="inputDescription" class="form-control" placeholder="Description" required></textarea>
+              </div>
+              
+              <div class="form-label-group">
+              <label for="inputLocation">Last Date</label>
+                <input type="date" ng-model="job.lastDateApply" id="inputLastDateApply" class="form-control" placeholder="Last Date" required >
+              </div>
+              
+            <hr>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" ng-click="saveJob(job)" type="submit">Post Job</button>
+             <!--  <a class="d-block text-center mt-2 small" href="#">Sign In</a> -->
+              <hr class="my-4">
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

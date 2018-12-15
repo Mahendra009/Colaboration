@@ -1,0 +1,30 @@
+<div >
+	<div class="list-group">
+		<div class="">
+			<a href="#!uploadProfilePicture" class="list-group-item "> <img
+				class="img-fluid rounded" alt="Profile Pic"
+				src="http://localhost:8081/BlogMiddleWare/getimage?emailId={{user.emailId}}">
+				<br> {{user.name}}
+			</a>
+			<!--  <a class="list-group-item" href="#!uploadProfilePicture"></a> -->
+			<!--  <a class="list-group-item dropdown dropdown-dropright" href="#!suggestedUsers"> <i class="fas fa-user-friends"></i> Friends</a> -->
+			<a class="list-group-item" href="#!updateProfile"><i
+				class="fas fa-user-circle"></i> Update Profile</a> <a
+				class="list-group-item" href="#!listOfFriends"><i
+				class="fas fa-user-friends"></i> Friends</a> <a class="list-group-item"
+				href="#!chat"><i class="far fa-comment"></i> Chat Room</a> <a
+				class="list-group-item" href="#!listJobs"> <i
+				class="fas fa-search-plus"></i> Job
+			</a> <a class="list-group-item" href="#!listApprovedBlogs"> <i
+				class="fab fa-blogger"></i> Blog
+			</a> <a class="list-group-item" ng-show="user.role == 'Admin'"
+				href="#!job"><i class="fas fa-search-plus"></i>Add Job</a> <a
+				class="list-group-item" href="#!addBlog"><i class="fas fa-ad"></i>
+				Add Blog</a> <a class="list-group-item" ng-show="user.role == 'Admin'"
+				href="#!listBlogsWaitingForApproval"><i
+				class="fas fa-chalkboard-teacher"></i> Waiting For Approval</a> <a
+				class="list-group-item" href="#" ng-click="logout()"><i
+				class="fas fa-sign-out-alt"></i> Logout</a>
+		</div>
+	</div>
+</div>

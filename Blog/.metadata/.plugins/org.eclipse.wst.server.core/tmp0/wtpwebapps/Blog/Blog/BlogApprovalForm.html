@@ -1,0 +1,27 @@
+<div class="container" style="margin-top: 75px;">
+<div class="card card-info">
+<div class="card-header bg-primary text-white" style="text-align: center;"><h3>{{blogPost.blogTitle}}</h3></div>
+<div class="card-body">
+<ul style="list-style: none;">
+<li>
+<b>Posted On : {{blogPost.postedOn}}</b><br>
+<b>Posted By : {{blogPost.postedBy.name}}</b><br>
+<!-- <b>Blog Content : {{blogPost.blogContent}}</b><br> -->
+<p ng-bind-html="content">
+<hr>
+</li>
+</ul>
+<button class="btn btn-info" ng-click="approveBlogPost(blogPost)">Approve Blog</button>
+<button class="btn btn-danger" ng-click="showTextArea()">Reject Blog</button>
+<div ng-show="isRejected">
+<textarea rows="5" cols="" ng-model="rejectionReason">
+
+
+</textarea>
+<button ng-click="rejectBlogPost(blogPost)" class="btn btn-danger">Submit</button>
+</div>
+</div>
+<div>
+</div>
+</div>
+</div>

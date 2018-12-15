@@ -1,0 +1,5 @@
+package com.niit.BlogBackEnd.DAO;
+
+public interface ChatDao {
+
+}

@@ -1,0 +1,7 @@
+package com.niit.BlogMiddleWare.Config;
+
+import org.springframework.web.socket.config.annotation.AbstractWebSocketMessageBrokerConfigurer;
+
+public class WebSocketConfiguration extends AbstractWebSocketMessageBrokerConfigurer  {
+
+}

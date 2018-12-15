@@ -1,0 +1,27 @@
+<div class="container">
+	<div class="card card-info">
+		<div class="card-header bg-primary text-white">
+			<h3 style="text-align: center;">Jobs Details</h3>
+		</div>
+		<div class="card-body">
+			<ul style="list-style: none;">
+				<li ng-repeat="j in jobs">
+				<h3><a href="" ng-click="showJobDetail(j.jobId)">{{j.jobTitle}}</a></h3>
+					Posted On : {{j.lastDateApply}}
+					
+					<div ng-show="showJob && jobId == j.jobId">
+					<b>Company Name</b> :  {{j.companyName}}<br>
+					<b>Designation</b> :  {{j.jobDesignation}}<br>
+					<b>Location</b> : {{j.location}}<br>
+					<b>Salary</b> : {{j.salary}}<br>
+					<b>Experience</b> : {{j.experience}}<br>
+					<b>Qualification</b> : {{j.jobQualification}}<br>
+					<b>Job Description</b> : {{j.jobDescription}}
+					</div>
+					<hr>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+package com.niit.BlogBackEnd.model;
+
+import java.util.Date;
+
+public class OutputMessage extends Message {
+	private User user1;
+	public User getUser() {
+		return user1;
+	}
+
+	public void setUser(User user) {
+		this.user1 = user;
+	}
+
+	private Date messageTime;
+
+	public OutputMessage(Message original, Date msgTime,User user1) {
+		this.setId(original.getId());
+		this.setMessage(original.getMessage());
+		this.user1=user1;
+		messageTime = msgTime;
+	}
+
+	public Date getMessageTime() {
+		return messageTime;
+	}
+
+	public void setMessageTime(Date messageTime) {
+		this.messageTime = messageTime;
+	}
+
+}

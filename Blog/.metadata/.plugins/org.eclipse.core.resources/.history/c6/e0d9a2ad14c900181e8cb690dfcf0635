@@ -1,0 +1,16 @@
+package com.niit.BlogMiddleWare.Config;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
+import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
+
+
+@Configuration
+@EnableWebSocketMessageBroker
+@ComponentScan(basePackages="com.niit")
+public class WebsocketConfiguration implements WebSocketMessageBrokerConfigurer  {
+	
+	
+
+}

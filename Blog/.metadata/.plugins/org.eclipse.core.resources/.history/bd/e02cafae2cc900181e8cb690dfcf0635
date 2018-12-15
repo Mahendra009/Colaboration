@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Vision</title>
+<link rel="shortcut icon" href="">
+<link rel="stylesheet" href="assets/css/bootstrap.css">
+<link rel="stylesheet" href="assets/css/all.css">
+<link rel="stylesheet" href="assets/css/myApp.css">
+<link rel="stylesheet" type="text/css" media="all" href="assets/css/fileinput.css">
+<link rel="stylesheet" type="text/css" media="all" href="assets/css/fileinput.min.css">
+<link rel="stylesheet" type="text/css" media="all" href="assets/themes/explorer/theme.css">
+<link rel="stylesheet" type="text/css" media="all" href="assets/css/portfolio.css">
+
+</head>
+<body ng-app="myBlog">
+
+ <div ng-include="'shared/Header.html'"></div>
+ <div ng-include="'shared/SideBar.html'"></div>
+<div ng-view></div>
+
+
+
+
+
+<script src="assets/js/angular.js"></script>
+<script src="assets/js/angular-route.js"></script>
+<script src="assets/js/angular-cookies.js"></script>
+<script src="RouteConfig.js"></script>
+<script src="User/UserController.js"></script>
+<script src="User/UserService.js"></script>
+<script src="Job/JobController.js"></script>
+<script src="Job/JobService.js"></script>
+<script src="Blog/BlogController.js"></script>
+<script src="Blog/BlogService.js"></script>
+<script src="Blog/BlogDetailController.js"></script>
+<script src="Notification/NotificationController.js"></script>
+<script src="Notification/NotificationService.js"></script>
+<script src="HomeController.js"></script>
+<script src="Notification/NotificationController.js"></script>
+<script src="Notification/NotificationService.js"></script>
+<script src="Friend/FriendController.js"></script>
+<script src="Friend/FriendService.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/fontawesome.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/fileinput.js"></script>
+<script src="assets/js/fileinput.min.js"></script>
+<script src="assets/themes/fa/theme.js"></script>
+<script src="assets/themes/explorer/theme.js"></script>
+<script src="assets/themes/gly/theme.js"></script>
+<script src="assets/themes/explorer/theme.js"></script>
+<script src="Chat/ChatController.js"></script>
+<script src="Chat/ChatService.js"></script>
+<script src=>"assets/js/sockjs.js"</script>
+<script src="assets/js/stomp.js"></script>
+<script src="assets/js/stomp.orig.js"></script>
+</body>
+</html>
